@@ -2,4 +2,9 @@
 
 .home-page {
   width: 100%;
+  .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }

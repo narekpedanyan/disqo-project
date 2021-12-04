@@ -1,5 +1,6 @@
 @import "fonts";
 @import "variables";
+@import "reset";
 @import "mixins";
 
 html {
@@ -8,9 +9,6 @@ html {
 }
 
 body {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
   background-color: var(--color-a);
 }
 

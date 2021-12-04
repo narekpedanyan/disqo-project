@@ -3,3 +3,22 @@
 @function rem($size) {
   @return ($size / $baseFontSize) + rem;
 }
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+    opacity: 1;
+  }
+  &:-moz-placeholder {
+    @content;
+    opacity: 1;
+  }
+  &::-moz-placeholder {
+    @content;
+    opacity: 1;
+  }
+  &:-ms-input-placeholder {
+    @content;
+    opacity: 1;
+  }
+}

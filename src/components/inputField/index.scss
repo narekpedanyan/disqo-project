@@ -1,0 +1,17 @@
+@import '../../assets/styles/mixins';
+
+label.field-label {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  .input-item {
+    width: 100%;
+    height: rem(40);
+    border-radius: rem(8);
+    border: rem(2) solid var(--color-b);
+    padding: 0 rem(12);
+    @include placeholder {
+      color: var(--color-b);
+    }
+  }
+}

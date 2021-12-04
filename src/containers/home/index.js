@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.scss';
+import InputField from "../../components/inputField";
 
 const Home = () => {
   return (
@@ -7,7 +8,16 @@ const Home = () => {
       <div className="container">
         <h1 className="page-heading">Notepad Application</h1>
         <div className="page-content">
-          asd
+          <div className="top-row">
+            <div>
+              <InputField />
+            </div>
+            <div>
+              <button type="button">View Stats</button>
+              <button type="button">Save</button>
+              <button type="button">Delete</button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
