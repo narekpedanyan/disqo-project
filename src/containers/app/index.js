@@ -1,5 +1,10 @@
 import React, { useEffect } from 'react';
-import {lightTheme} from "./constants/themes";
+import {lightTheme} from "../../constants/themes";
+import {
+  Switch,
+  Route
+} from "react-router-dom";
+import Home from "../home";
 
 function App() {
   const setDefaultThemeColors = () => {
@@ -7,14 +12,20 @@ function App() {
     let dynamicVarsStr = '';
     Object.keys(lightTheme).forEach(
       (item) => {
-        dynamicVarsStr += `${item}: ${lightTheme[item]}`;
+        dynamicVarsStr += `${item}: ${lightTheme[item]};`;
       }
     );
     rootEl.setAttribute('style', dynamicVarsStr);
   }
   useEffect(() => setDefaultThemeColors(), []);
   return (
-    <div>Hello world!</div>
+    <main className="application">
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </main>
   );
 }
 
