@@ -29,7 +29,6 @@ TextArea.propTypes = {
   maxCharacterCount: PropTypes.number,
   onChangeHandler: PropTypes.func,
   placeholder: PropTypes.string,
-  className: PropTypes.string,
   error: PropTypes.string,
   name: PropTypes.string
 }

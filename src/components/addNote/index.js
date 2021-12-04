@@ -17,7 +17,6 @@ const AddNote = () => {
     error: initialData
   });
   const { params, error } = state;
-  console.log(state, 'state');
   const handleChange = useCallback(
     (evt) => {
       const { name, value } = evt.target;
@@ -39,8 +38,6 @@ const AddNote = () => {
         (item) => {
           const currentValue = params[item];
           const isEmpty = currentValue.length === 0;
-          console.log(currentValue, 'currentValue');
-          console.log(validateRules[`${item}MaxCharacterCount`], 'max char count')
           const isOvered = currentValue.length > validateRules[`${item}MaxCharacterCount`];
           if (!isEmpty && !isOvered) {
             // Post request
