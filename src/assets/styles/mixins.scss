@@ -34,3 +34,9 @@
     color: var(--color-b);
   }
 }
+
+@mixin fieldErrorStyles {
+  color: var(--color-f);
+  margin-top: rem(8);
+  font-size: rem(16);
+}

@@ -4,26 +4,63 @@ import TextArea from "../textArea";
 import ActionButton from "../actionButton";
 import { styleTypes } from '../../constants/actionButtonStyleTypes';
 import { validateRules } from '../../constants/validateRules';
+import getErrorMessage from '../../helpers/getErrorMessage';
 import './index.scss';
 
 const AddNote = () => {
-  const [requestParams, setRequestParams] = useState({
+  const initialData = {
     title: '',
     content: ''
+  };
+  const [state, setState] = useState({
+    params: initialData,
+    error: initialData
   });
-
+  const { params, error } = state;
+  console.log(state, 'state');
   const handleChange = useCallback(
     (evt) => {
-      console.log(evt.target.value, 'event.>>')
+      const { name, value } = evt.target;
+      setState(prev => ({
+        ...prev,
+        params: {
+          ...prev.params,
+          [name]: value
+        },
+        error: initialData
+      }));
     },
     []
   );
 
   const submit = useCallback(
     () => {
-      console.log('>>>');
+      Object.keys(params).forEach(
+        (item) => {
+          const currentValue = params[item];
+          const isEmpty = currentValue.length === 0;
+          console.log(currentValue, 'currentValue');
+          console.log(validateRules[`${item}MaxCharacterCount`], 'max char count')
+          const isOvered = currentValue.length > validateRules[`${item}MaxCharacterCount`];
+          if (!isEmpty && !isOvered) {
+            // Post request
+          } else {
+            const errorFieldName = isEmpty ? 'empty' : 'overed';
+            const errMessage = getErrorMessage(item, errorFieldName);
+            setState(prev => {
+              return {
+                ...prev,
+                error: {
+                  ...prev.error,
+                  [item]: errMessage
+                }
+              }
+            })
+          }
+        }
+      )
     },
-    [requestParams]
+    [params, setState]
   );
 
   return (
@@ -33,10 +70,15 @@ const AddNote = () => {
         maxCharacterCount={validateRules.titleMaxCharacterCount}
         placeholder="Enter note title"
         onChangeHandler={handleChange}
+        error={error.title}
+        name="title"
       />
       <TextArea
         maxCharacterCount={validateRules.contentMaxCharacterCount}
         onChangeHandler={handleChange}
+        placeholder="Enter note"
+        error={error.content}
+        name="content"
       />
       <ActionButton
         styleType={styleTypes.typeC}

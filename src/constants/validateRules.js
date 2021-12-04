@@ -1,6 +1,5 @@
 export const validateRules = {
-  titleMaxCharacterCount: 255,
+  titleMaxCharacterCount: 4,
   contentMaxCharacterCount: 1000
 };
-
 

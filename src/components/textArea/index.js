@@ -3,18 +3,35 @@ import PropTypes from 'prop-types';
 import './index.scss';
 
 const TextArea = ({
-    maxCharacterCount = 30,
-    onChangeHandler
+  placeholder = 'Type your text',
+  maxCharacterCount = 30,
+  onChangeHandler,
+  error = '',
+  name = ''
   }) => {
   return (
-    <label className="textarea" onChange={onChangeHandler}>
-      <textarea className="area-field" maxLength={maxCharacterCount}/>
+    <label className="textarea">
+      <textarea
+        maxLength={maxCharacterCount}
+        onChange={onChangeHandler}
+        placeholder={placeholder}
+        className="area-field"
+        name={name}
+      />
+      {
+        error && (<p className="err">{error}</p> )
+      }
     </label>
   )
 }
 
 TextArea.propTypes = {
-  onChangeHandler: PropTypes.func
+  maxCharacterCount: PropTypes.number,
+  onChangeHandler: PropTypes.func,
+  placeholder: PropTypes.string,
+  className: PropTypes.string,
+  error: PropTypes.string,
+  name: PropTypes.string
 }
 
 export default TextArea;

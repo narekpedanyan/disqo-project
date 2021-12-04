@@ -7,4 +7,7 @@ label.textarea {
     min-height: rem(200);
     padding: rem(12);
   }
+  .err {
+    @include fieldErrorStyles();
+  }
 }

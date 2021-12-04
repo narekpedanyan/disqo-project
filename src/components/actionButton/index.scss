@@ -8,6 +8,9 @@ button.act-btn {
   color: var(--color-d);
   cursor: pointer;
   min-width: rem(160);
+  &[disabled] {
+    opacity: .5;
+  }
   &.default {
     border-radius: rem(3);
     border: rem(1) solid var(--color-b);
