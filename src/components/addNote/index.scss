@@ -1,0 +1,23 @@
+@import '../../assets/styles/mixins';
+
+.add-note-form {
+  max-width: 60%;
+  margin-top: rem(65);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  > p {
+    font-size: rem(35);
+  }
+  .field-label {
+    margin-top: rem(25);
+  }
+
+  .textarea {
+    margin-top: rem(15);
+  }
+
+  .act-btn {
+    margin-top: rem(28);
+  }
+}

@@ -1,16 +1,21 @@
 @import "variables";
 
-body {
+body, * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 input, textarea, button {
+  background-color: transparent;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   display: block;
   outline: none;
   border: none;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
 }

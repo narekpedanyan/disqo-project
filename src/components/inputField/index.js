@@ -4,13 +4,15 @@ import './index.scss';
 
 const InputField = ({
                       placeholder = 'Type something here',
+                      maxCharacterCount = 10,
                       onChangeHandler = () => null,
                       type = 'text'
-  }) => {
+}) => {
   return (
     <label className="field-label">
       <input
         onChange={(evt) => onChangeHandler(evt)}
+        maxLength={maxCharacterCount}
         placeholder={placeholder}
         className="input-item"
         type={type}

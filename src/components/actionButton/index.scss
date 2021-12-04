@@ -1,0 +1,27 @@
+@import '../../assets/styles/mixins';
+
+button.act-btn {
+  height: rem(60);
+  padding: 0 rem(24);
+  border-radius: rem(5);
+  font-size: rem(26);
+  color: var(--color-d);
+  cursor: pointer;
+  min-width: rem(160);
+  &.default {
+    border-radius: rem(3);
+    border: rem(1) solid var(--color-b);
+  }
+  &.type-a {
+    color: var(--color-c);
+    background-color: var(--color-e);
+  }
+  &.type-b {
+    color: var(--color-c);
+    background-color: var(--color-f);
+  }
+  &.type-c {
+    color: var(--color-c);
+    background-color: var(--color-h);
+  }
+}

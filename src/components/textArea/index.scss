@@ -1,10 +1,10 @@
 @import '../../assets/styles/mixins';
 
-label.field-label {
+label.textarea {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  .input-item {
+  .area-field {
     @include fieldSharedStyles();
+    min-height: rem(200);
+    padding: rem(12);
   }
 }

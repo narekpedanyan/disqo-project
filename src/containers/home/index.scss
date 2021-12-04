@@ -2,9 +2,23 @@
 
 .home-page {
   width: 100%;
+  .notepad-title {
+    margin-bottom: rem(10);
+    font-weight: 400;
+    font-size: rem(25);
+  }
   .top-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .action-buttons {
+    display: flex;
+    .act-btn {
+      + .act-btn {
+        margin-left: rem(12);
+      }
+    }
   }
 }

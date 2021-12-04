@@ -22,3 +22,15 @@
     opacity: 1;
   }
 }
+
+@mixin fieldSharedStyles {
+  width: 100%;
+  height: rem(60);
+  border-radius: rem(8);
+  border: rem(2) solid var(--color-b);
+  padding: 0 rem(12);
+  font-size: rem(25);
+  @include placeholder {
+    color: var(--color-b);
+  }
+}
