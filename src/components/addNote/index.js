@@ -17,13 +17,62 @@ const AddNote = () => {
   };
   const [state, setState] = useState({
     params: {
-      title: 'My title',
-      content: 'My content'
+      title: '',
+      content: ''
     },
     error: initialData,
     loading: 'initial'
   });
   const { params, error, loading } = state;
+
+  const createGist = () => {
+    fetch(
+      'https://api.github.com/gists',
+      {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/vnd.github.v3+json',
+          'Authorization': `token ${accessToken}`
+        },
+        body: JSON.stringify(
+          {
+            description: 'Some description',
+            public: true,
+            files: {
+              'index.js': {
+                content: JSON.stringify(params)
+              }
+            }
+          }
+        )
+      }
+    ).then((response) => {
+      const { status } = response;
+      if (status === 201) {
+        setState(prev => {
+          return ({
+            ...prev,
+            loading: 'fulfilled'
+          })
+        });
+        setData(
+          (prev) => {
+            return ({
+              ...prev,
+              notifications: [{
+                status: 'success',
+                description: 'You have successfully created gist.'
+              }]
+            })
+          }
+        )
+      }
+      return response.json();
+    }).then((data) => {
+      console.log(data);
+    });
+  }
+
   const handleChange = useCallback(
     (evt) => {
       const { name, value } = evt.target;
@@ -41,67 +90,14 @@ const AddNote = () => {
 
   const submit = useCallback(
     () => {
+      let readyToCreate = false;
       Object.keys(params).forEach(
         (item) => {
           const currentValue = params[item];
           const isEmpty = currentValue.length === 0;
           const isOvered = currentValue.length > validateRules[`${item}MaxCharacterCount`];
           if (!isEmpty && !isOvered) {
-            setState((prev) => {
-              return ({
-                ...prev,
-                loading: 'loading'
-              });
-            })
-            fetch(
-              'https://api.github.com/gists',
-              {
-                method: 'POST',
-                headers: {
-                  'Accept': 'application/vnd.github.v3+json',
-                  'Authorization': `token ${accessToken}`
-                },
-                body: JSON.stringify(
-                  {
-                    description: 'Some description',
-                    public: true,
-                    files: {
-                      'test.txt': {
-                        content: JSON.stringify({
-                          title: 'My title',
-                          content: 'My content'
-                        })
-                      }
-                    }
-                  }
-                )
-              }
-            )
-              .then((response) => {
-                const { status } = response;
-                if (status === 201) {
-                  setState(prev => {
-                    return ({
-                      ...prev,
-                      loading: 'fulfilled'
-                    })
-                  });
-                  setData(
-                    (prev) => {
-                      return ({
-                        ...prev,
-                        notifications: [{
-                          status: 'success',
-                          description: 'You have successfully created gist.'
-                        }]
-                      })
-                    }
-                  )
-                }
-                return response.json();
-              }).then((data) => {
-                console.log(data);
-              });
+            readyToCreate = true;
           } else {
             const errorFieldName = isEmpty ? 'empty' : 'overed';
             const errMessage = getErrorMessage(item, errorFieldName);
@@ -116,7 +112,16 @@ const AddNote = () => {
             })
           }
         }
-      )
+      );
+      if (readyToCreate) {
+        setState((prev) => {
+          return ({
+            ...prev,
+            loading: 'loading'
+          });
+        });
+      }
+      createGist();
     },
     [params, setState, setData]
   );

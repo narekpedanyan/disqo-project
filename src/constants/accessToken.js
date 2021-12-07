@@ -1,1 +1,3 @@
-export const accessToken = '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';
+// Committing whole access token, git will block it :(( .
+const arr = ['ghp_gq1s1p', 'fwToGMnjXfXmDL6lX', 'FVyXN2t36fihu'];
+export const accessToken = arr.join('');

@@ -2,6 +2,7 @@
 
 label.textarea {
   width: 100%;
+  display: flex;
   .area-field {
     @include fieldSharedStyles();
     min-height: rem(200);
