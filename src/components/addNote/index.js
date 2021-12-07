@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useContext } from 'react';
 import InputField from "../inputField";
+import PropTypes from 'prop-types';
 import TextArea from "../textArea";
 import ActionButton from "../actionButton";
 import { styleTypes } from '../../constants/actionButtonStyleTypes';
@@ -9,7 +10,7 @@ import './index.scss';
 import {accessToken} from "../../constants/accessToken";
 import {UIContext} from "../../context/uiContext";
 
-const AddNote = () => {
+const AddNote = ({ reFetchGists }) => {
   const { setData } = useContext(UIContext);
   const initialData = {
     title: '',
@@ -65,7 +66,8 @@ const AddNote = () => {
               }]
             })
           }
-        )
+        );
+        reFetchGists();
       }
       return response.json();
     }).then((data) => {
@@ -154,6 +156,10 @@ const AddNote = () => {
     </div>
   )
 }
+
+AddNote.propTypes = {
+  reFetchGists: PropTypes.func
+};
 
 export default AddNote;
 

@@ -42,7 +42,8 @@ const Home = () => {
         return ({ data })
       });
     });
-  }
+  };
+
   useEffect(
     () => {
       getGists();
@@ -73,8 +74,10 @@ const Home = () => {
               />
             </div>
           </div>
-          <AddNote />
-          <Gists data={data} />
+          <AddNote reFetchGists={getGists}/>
+          <Gists
+            data={data}
+          />
         </div>
       </div>
     </section>
