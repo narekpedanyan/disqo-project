@@ -8,8 +8,12 @@
   grid-gap: rem(60);
   .each-gist {
     .title-holder {
+      display: flex;
       .field-label {
         max-width: 60%;
+      }
+      .act-btn {
+        margin-left: rem(40);
       }
     }
     .content-holder {

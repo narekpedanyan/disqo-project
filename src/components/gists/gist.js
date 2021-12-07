@@ -1,7 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
+import PropTypes from 'prop-types';
 import {validateRules} from "../../constants/validateRules";
 import InputField from "../inputField";
 import TextArea from "../textArea";
+import {styleTypes} from "../../constants/actionButtonStyleTypes";
+import ActionButton from "../actionButton";
 
 const Gist = ({ rawUrl }) => {
   const initialData = useRef({});
@@ -26,6 +29,10 @@ const Gist = ({ rawUrl }) => {
           value={title}
           onChangeHandler={() => null}
         />
+        <ActionButton
+          label="Delete"
+          styleType={styleTypes.typeB}
+        />
       </div>
       <div className="content-holder">
         <TextArea
@@ -38,5 +45,9 @@ const Gist = ({ rawUrl }) => {
     </React.Fragment>
   )
 }
+
+Gist.propTypes = {
+  rawUrl: PropTypes.string.isRequired
+};
 
 export default Gist;
