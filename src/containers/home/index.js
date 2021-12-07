@@ -20,7 +20,7 @@ const Home = () => {
 
 
   const getGists = () => {
-    setState((prev) => {
+    setState(() => {
       return (
         { loading: 'loading' }
       )
@@ -76,6 +76,8 @@ const Home = () => {
           </div>
           <AddNote reFetchGists={getGists}/>
           <Gists
+            reFetchGists={getGists}
+            loading={loading}
             data={data}
           />
         </div>

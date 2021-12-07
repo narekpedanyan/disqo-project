@@ -6,7 +6,7 @@ import TextArea from "../textArea";
 import {styleTypes} from "../../constants/actionButtonStyleTypes";
 import ActionButton from "../actionButton";
 
-const Gist = ({ rawUrl }) => {
+const Gist = ({ rawUrl, gistId, removeGist }) => {
   const initialData = useRef({});
   const [data, setData] = useState({});
   const { title, content } = data;
@@ -30,8 +30,9 @@ const Gist = ({ rawUrl }) => {
           onChangeHandler={() => null}
         />
         <ActionButton
-          label="Delete"
+          clickHandler={() => removeGist(gistId)}
           styleType={styleTypes.typeB}
+          label="Delete"
         />
       </div>
       <div className="content-holder">
@@ -47,7 +48,9 @@ const Gist = ({ rawUrl }) => {
 }
 
 Gist.propTypes = {
-  rawUrl: PropTypes.string.isRequired
+  removeGist: PropTypes.func.isRequired,
+  rawUrl: PropTypes.string.isRequired,
+  gistId: PropTypes.string.isRequired
 };
 
 export default Gist;

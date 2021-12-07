@@ -3,13 +3,14 @@
 .notification {
   position: fixed;
   right: 0;
-  height: rem(40);
+  min-height: rem(40);
   display: flex;
   align-items: center;
   top: rem(15);
   padding: rem(12);
   background-color: #fff;
   border: rem(1) solid #000;
+  font-size: rem(20);
   animation-name: showAnimation;
   animation-fill-mode: forwards;
   animation-timing-function: linear;

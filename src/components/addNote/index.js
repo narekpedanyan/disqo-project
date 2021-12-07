@@ -6,9 +6,9 @@ import ActionButton from "../actionButton";
 import { styleTypes } from '../../constants/actionButtonStyleTypes';
 import { validateRules } from '../../constants/validateRules';
 import getErrorMessage from '../../helpers/getErrorMessage';
-import './index.scss';
 import {accessToken} from "../../constants/accessToken";
 import {UIContext} from "../../context/uiContext";
+import './index.scss';
 
 const AddNote = ({ reFetchGists }) => {
   const { setData } = useContext(UIContext);
@@ -53,6 +53,7 @@ const AddNote = ({ reFetchGists }) => {
         setState(prev => {
           return ({
             ...prev,
+            params: initialData,
             loading: 'fulfilled'
           })
         });
@@ -122,8 +123,8 @@ const AddNote = ({ reFetchGists }) => {
             loading: 'loading'
           });
         });
+        createGist();
       }
-      createGist();
     },
     [params, setState, setData]
   );
