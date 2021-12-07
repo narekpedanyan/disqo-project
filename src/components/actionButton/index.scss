@@ -10,6 +10,7 @@ button.act-btn {
   min-width: rem(160);
   &[disabled] {
     opacity: .5;
+    cursor: default;
   }
   &.default {
     border-radius: rem(3);

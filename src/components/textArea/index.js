@@ -7,7 +7,8 @@ const TextArea = ({
   maxCharacterCount = 30,
   onChangeHandler,
   error = '',
-  name = ''
+  name = '',
+  value
   }) => {
   return (
     <label className="textarea">
@@ -17,6 +18,7 @@ const TextArea = ({
         placeholder={placeholder}
         className="area-field"
         name={name}
+        value={value}
       />
       {
         error && (<p className="err">{error}</p> )

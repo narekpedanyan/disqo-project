@@ -8,7 +8,8 @@ const InputField = ({
   onChangeHandler = () => null,
   type = 'text',
   name = '',
-  error = ''
+  error = '',
+  value
 }) => {
   return (
     <label className="field-label">
@@ -17,6 +18,7 @@ const InputField = ({
         maxLength={maxCharacterCount}
         placeholder={placeholder}
         className="input-item"
+        value={value}
         name={name}
         type={type}
       />

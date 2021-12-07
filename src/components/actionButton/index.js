@@ -7,12 +7,14 @@ const ActionButton = ({
   clickHandler = () => null,
   type = 'button',
   className = '',
+  disabled,
   label
 }) => {
   return (
     <button
       className={`act-btn ${styleType} ${className}`}
-      onClick={clickHandler}
+      onClick={disabled ? () => null : clickHandler}
+      disabled={disabled}
       type={type}
     >
       {label}
@@ -23,6 +25,7 @@ const ActionButton = ({
 ActionButton.propTypes = {
   clickHandler: PropTypes.func,
   className: PropTypes.string,
+  disabled: PropTypes.bool,
   label: PropTypes.string,
   type: PropTypes.string
 };

@@ -6,6 +6,7 @@ import { styleTypes } from '../../constants/actionButtonStyleTypes';
 import AddNote from "../../components/addNote";
 
 const Home = () => {
+
   return (
     <section className="home-page">
       <div className="container">

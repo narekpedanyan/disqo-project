@@ -1,0 +1,40 @@
+@import '../../assets/styles/mixins';
+
+.notification {
+  position: fixed;
+  right: 0;
+  height: rem(40);
+  display: flex;
+  align-items: center;
+  top: rem(15);
+  padding: rem(12);
+  background-color: #fff;
+  border: rem(1) solid #000;
+  animation-name: showAnimation;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+  border-radius: rem(5) 0 0 rem(5);
+  animation-duration: 2s;
+  color: var(--color-c);
+  &.success {
+    background-color: var(--color-h);
+  }
+  &.error {
+    background-color: var(--color-f);
+  }
+}
+
+@keyframes showAnimation {
+  0% {
+    transform: translateX(100%);
+  }
+  10% {
+    transform: translateX(0);
+  }
+  85% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
