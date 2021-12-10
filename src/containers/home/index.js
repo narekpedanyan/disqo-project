@@ -12,34 +12,18 @@ const Home = () => {
     page: 1
   });
   const [state, setState] = useState({
-    data: [],
-    loading: 'initial',
-    error: false
+    data: []
   });
-  const { data, loading, error } = state;
-
+  const { data } = state;
 
   const getGists = () => {
-    setState(() => {
-      return (
-        { loading: 'loading' }
-      )
-    });
     fetch(
       `https://api.github.com/users/narekpedanyan/gists`,
     ).then((response) => {
-      const { ok } = response;
-      if (ok) {
-        setState((prev) => {
-          return (
-            { loading: 'fulfilled' }
-          )
-        });
-      }
       return response.json();
     }).then((data) => {
       setState((prev) => {
-        return ({ data })
+        return ({ ...prev, data })
       });
     });
   };
@@ -77,7 +61,6 @@ const Home = () => {
           <AddNote reFetchGists={getGists}/>
           <Gists
             reFetchGists={getGists}
-            loading={loading}
             data={data}
           />
         </div>

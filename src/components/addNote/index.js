@@ -50,13 +50,7 @@ const AddNote = ({ reFetchGists }) => {
     ).then((response) => {
       const { status } = response;
       if (status === 201) {
-        setState(prev => {
-          return ({
-            ...prev,
-            params: initialData,
-            loading: 'fulfilled'
-          })
-        });
+        reFetchGists();
         setData(
           (prev) => {
             return ({
@@ -68,7 +62,6 @@ const AddNote = ({ reFetchGists }) => {
             })
           }
         );
-        reFetchGists();
       }
       return response.json();
     }).then((data) => {
@@ -126,7 +119,7 @@ const AddNote = ({ reFetchGists }) => {
         createGist();
       }
     },
-    [params, setState, setData]
+    [params, setState, setData, createGist]
   );
 
   return (

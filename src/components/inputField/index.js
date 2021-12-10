@@ -9,7 +9,7 @@ const InputField = ({
   type = 'text',
   name = '',
   error = '',
-  value
+  value = ''
 }) => {
   return (
     <label className="field-label">

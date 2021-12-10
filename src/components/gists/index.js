@@ -6,8 +6,7 @@ import {accessToken} from "../../constants/accessToken";
 
 const Gists = ({
   data = [],
-                 reFetchGists,
-  loading
+  reFetchGists
 }) => {
 
   const removeGist = useCallback(
@@ -33,36 +32,32 @@ const Gists = ({
       })
     },
     []
-  )
+  );
 
   return (
     <div className="gists">
       {
-        loading !== 'loading' ? (
-          data.map((item, index) => {
-            const { files, id } = item;
-            return (
-              <div key={index} className="each-gist">
-                {
-                  Object.keys(files).map((fileName, index) => {
-                    const file = files[fileName];
-                    const { raw_url: rawUrl } = file;
-                    return (
-                      <Gist
-                        removeGist={removeGist}
-                        rawUrl={rawUrl}
-                        key={index}
-                        gistId={id}
-                      />
-                    );
-                  })
-                }
-              </div>
-            )
-          })
-        ) : (
-          <div>Loading</div>
-        )
+        (data || []).map((item, index) => {
+          const { files, id } = item;
+          return (
+            <div key={index} className="each-gist">
+              {
+                Object.keys(files).map((fileName, index) => {
+                  const file = files[fileName];
+                  const { raw_url: rawUrl } = file;
+                  return (
+                    <Gist
+                      removeGist={removeGist}
+                      rawUrl={rawUrl}
+                      key={index}
+                      gistId={id}
+                    />
+                  );
+                })
+              }
+            </div>
+          )
+        })
       }
     </div>
   )

@@ -8,7 +8,7 @@ const TextArea = ({
   onChangeHandler,
   error = '',
   name = '',
-  value
+  value = ''
   }) => {
   return (
     <label className="textarea">
